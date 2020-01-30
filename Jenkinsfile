@@ -1,15 +1,7 @@
-@Library('jenkins_shared_library@master') _
+#!/usr/bin/env groovy
 
-pipeline {
-    agent any
-    stages {
-        stage('Git Checkout') {
-            steps {
-            gitCheckout(
-                branch: "master",
-                url: "https://github.com/dp119/atmosphere2.git"
-            )
-            }
-    }
-    }
-}
+// Configure using microservice-pipelines and using "part2" branch
+@Library("jenkins_shared_library@part2") _
+
+// Entry point into microservice-pipelines
+jenkinsJob.call()
